@@ -7,12 +7,12 @@ function  Cartcard(props){
         <ol class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
-      <div class="fw-bold">{props.items.name} - ${props.items.newprice}</div>
+      <div class="fw-bold">{props.items.name} - ${props.items.newprice} &nbsp;</div>
       
     </div>
     <button onClick={() => {
         props.Removecart(props.items)
-    }} class="badge bg-primary rounded-pill" type="button">Remove</button>
+    }} class="badge bg-primary rounded-pill" type="button"> Remove</button>
   </li>
 </ol>
     </div>

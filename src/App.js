@@ -7,7 +7,7 @@ import Footer from './Footer';
 import Card from './Card';
 
 function App() {
-  const[Data,SetData] = useState([
+  const[Data] = useState([
     {
       id:1,
       name: "Fancy product",
@@ -76,7 +76,7 @@ function App() {
       newprice: 18.00,
       isbadge:true,
       israting: true,
-      isbtnname:"Add to cart",
+      isbtnname:"View options",
       image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",
 
     },
@@ -92,12 +92,13 @@ function App() {
     }]);
     const [Cart,setcart] = useState ([]);
     const [total,settotal] = useState (0);
+    // const [toggle,settoggle] = useState (true);
 
     let Addtocart = (items) => {
       setcart([...Cart,items])
       settotal (total+items.newprice)
     }
-    console.log (Addtocart);
+    //console.log (Addtocart);
 
     let Removecart = (items) => {
       let itemindex = Cart.findIndex(obj => items.id === obj.id);
@@ -105,6 +106,9 @@ function App() {
       setcart([...Cart])
       settotal (total- items.newprice);
     }
+    // let togglebutton = (toggle) => {
+    //   settoggle (!toggle);
+    // }
 
     return (
     <div className="App">
@@ -118,8 +122,8 @@ function App() {
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                   {
-                    Data.map((Product)=>{
-                      return <Card Product = {Product} Addcart= {Addtocart} Cart={Cart}></Card>
+                    Data.map((Product,index)=>{
+                      return <Card Product = {Product} index = {index} Addcart= {Addtocart} ></Card>
                     })
                   }
                   </div>

@@ -29,7 +29,7 @@ function Navbar(props){
                                 props.Cart.map((items) =>{
                                     return <Cartcard items = {items} Removecart={props.Removecart}></Cartcard>
                                 })
-                            }
+}
                     
                         </button>    
                     </form>

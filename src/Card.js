@@ -26,9 +26,17 @@ function Card (props) {
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            {props.Product.isbtnname === "View options"?
+                                                   <div class="text-center"><button 
+                                                    href="#" class="btn btn-outline-primary mt-auto">View options</button></div>
+                                :
                                 <div class="text-center"><button  onClick={() => {
                                     props.Addcart(props.Product)
-                                }} href="#" class={props.Product.isbtnName === "View options" ?"btn btn-outline-dark mt-auto":"btn btn-outline-primary mt-auto"}>{props.Product.isbtnname}</button></div>
+                                }} href="#" class="btn btn-outline-primary mt-auto">Add to cart</button></div>
+
+
+                            }
+                          
                             </div>
                         </div>         
                     </div>
