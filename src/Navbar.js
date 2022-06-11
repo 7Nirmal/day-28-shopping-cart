@@ -27,7 +27,7 @@ function Navbar(props){
                             <span class="badge bg-dark text-white ms-1 rounded-pill">{props.Cart.length}</span>
                             {
                                 props.Cart.map((items) =>{
-                                    return <Cartcard items = {items} Removecart={props.Removecart}></Cartcard>
+                                    return <Cartcard items = {items} Removecart={props.Removecart}/>
                                 })
 }
                     

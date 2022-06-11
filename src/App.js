@@ -97,6 +97,10 @@ function App() {
     let Addtocart = (items) => {
       setcart([...Cart,items])
       settotal (total+items.newprice)
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
     //console.log (Addtocart);
 
@@ -113,17 +117,17 @@ function App() {
     return (
     <div className="App">
   <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
-      <Navbar Cart = {Cart} Removecart ={Removecart} total = {total}></Navbar>
+      <Navbar Cart = {Cart} Removecart ={Removecart} total = {total}/>
       </nav>
       <header class="bg-dark py-5">
-        <Header></Header>
+        <Header/>
       </header>
       <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                   {
                     Data.map((Product,index)=>{
-                      return <Card Product = {Product} index = {index} Addcart= {Addtocart} ></Card>
+                      return <Card product = {Product} key = {index} Addcart= {Addtocart} Cart={Cart} />
                     })
                   }
                   </div>
@@ -131,7 +135,7 @@ function App() {
                   </section>
 
   
-        <Footer></Footer>
+        <Footer/>
     
 
 </div>
