@@ -1,7 +1,7 @@
 import React from 'react';
 //import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-function Card ({product,Addcart,Cart}) {
+function Card ({product,Addcart,Removecart,index}) {
     return (
         <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mb-5">
                         <div class="card h-100 border-2">
@@ -25,14 +25,15 @@ function Card ({product,Addcart,Cart}) {
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            {product.isbtnname === "View options"?
+                            {product.isbtnname === "View options" ?
                                                    <div class="text-center"><button 
                                                     href="#" class="btn btn-outline-primary mt-auto">View options</button></div>
                                 :
-                                <div class="text-center"><button  onClick={() => {
-                                    Addcart(product)
-                                }} href="#" class="btn btn-outline-primary mt-auto">Add to cart</button></div>
+                                <div class="text-center">{product.isadded?<button onClick={()=>{Removecart(product,index)}}href="#" class="btn btn-outline-primary mt-auto">remove cart</button>:<button  onClick={() => {
+                                    Addcart(product,index)
+                                }} href="#" class="btn btn-outline-primary mt-auto">Add to cart</button>}</div>
                             }
+
                             
                           
                             </div>

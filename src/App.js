@@ -7,7 +7,7 @@ import Footer from './Footer';
 import Card from './Card';
 
 function App() {
-  const[Data] = useState([
+  const[data,setData] = useState([
     {
       id:1,
       name: "Fancy product",
@@ -16,6 +16,7 @@ function App() {
       isbadge:false,
       israting:false,
       isbtnname:"View options",
+      isadded:false,
       image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",
     },
     {
@@ -26,6 +27,7 @@ function App() {
       isbadge:true,
       israting: true,
       isbtnname:"Add to cart",
+      isadded:false,
       image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",
     },
     {
@@ -36,6 +38,7 @@ function App() {
       isbadge:false,
       israting: false,
       isbtnname:"Add to cart",
+      isadded:false,
       image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",
 
     },
@@ -47,6 +50,7 @@ function App() {
       isbadge: false,
       israting: true,
       isbtnname:"Add to cart",
+      isadded:false,
       image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",
     },
     {
@@ -57,6 +61,7 @@ function App() {
       isbadge: false,
       israting: false,
       isbtnname:"Add to cart",
+      isadded:false,
       image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",
     },
     {
@@ -67,6 +72,7 @@ function App() {
       isbadge: false,
       israting: false,
       isbtnname:"Add to cart",
+      isadded:false,
       image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",
     },
     {
@@ -77,6 +83,7 @@ function App() {
       isbadge:true,
       israting: true,
       isbtnname:"View options",
+      isadded:false,
       image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",
 
     },
@@ -88,13 +95,17 @@ function App() {
       isbadge: false,
       israting: true,
       isbtnname:"Add to cart",
+      isadded:false,
       image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",
     }]);
     const [Cart,setcart] = useState ([]);
     const [total,settotal] = useState (0);
     // const [toggle,settoggle] = useState (true);
 
-    let Addtocart = (items) => {
+    let Addtocart = (items,index) => {
+      let tempdata = data
+      tempdata[index].isadded=true;
+      setData(tempdata);
       setcart([...Cart,items])
       settotal (total+items.newprice)
       window.scrollTo({
@@ -104,7 +115,9 @@ function App() {
     }
     //console.log (Addtocart);
 
-    let Removecart = (items) => {
+    let Removecart = (items,index) => {
+      let tempdata = data
+      tempdata[index].isadded=false;
       let itemindex = Cart.findIndex(obj => items.id === obj.id);
       Cart.splice(itemindex,1);
       setcart([...Cart])
@@ -126,8 +139,8 @@ function App() {
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                   {
-                    Data.map((Product,index)=>{
-                      return <Card product = {Product} key = {index} Addcart= {Addtocart} Cart={Cart} />
+                    data.map((Product,index)=>{
+                      return <Card product = {Product} key = {index} Addcart= {Addtocart} Cart={Cart} index={index} Removecart={Removecart} />
                     })
                   }
                   </div>

@@ -10,9 +10,9 @@ function  Cartcard(props){
       <div class="fw-bold">{props.items.name} - ${props.items.newprice} &nbsp;</div>
       
     </div>
-    <button onClick={() => {
-        props.Removecart(props.items)
-    }} class="badge bg-primary rounded-pill" type="button"> Remove</button>
+    {/* <button onClick={() => {
+        props.Removecart(props.items,props.index)
+    }} class="badge bg-primary rounded-pill" type="button"> Remove</button> */}
   </li>
 </ol>
     </div>
